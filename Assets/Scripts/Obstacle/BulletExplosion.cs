@@ -11,7 +11,7 @@ public class BulletExplosion : Bullet
     protected override void Start()
     {
         base.Start();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
     protected override void OnTriggerEnter(Collider collision)
     {
