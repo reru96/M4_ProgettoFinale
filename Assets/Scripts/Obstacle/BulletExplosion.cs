@@ -6,7 +6,7 @@ public class BulletExplosion : Bullet
 {
     [SerializeField] protected float radius;
     [SerializeField] protected bool isExploded = false;
-    [SerializeField] protected Animator anim;
+    //[SerializeField] protected Animator anim;
 
     protected override void Start()
     {
@@ -29,7 +29,7 @@ public class BulletExplosion : Bullet
                     gameObject.SetActive(false);
                 }
                 isExploded = true;
-                anim.SetBool("Explosion", isExploded);
+                //anim.SetBool("Explosion", isExploded);
             }
         }
 
@@ -47,7 +47,7 @@ public class BulletExplosion : Bullet
                 }
             }
             isExploded = true;
-            anim.SetBool("Explosion", isExploded);
+            //anim.SetBool("Explosion", isExploded);
             gameObject.SetActive(false);
         }
 
