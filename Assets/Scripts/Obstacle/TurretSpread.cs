@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretSpread : Turret
 {
+   [SerializeField] private ObjectPoolManager poolS;
     protected override void Update()
     {
         if (!isRanged) return;
@@ -30,7 +31,7 @@ public class TurretSpread : Turret
     // Nuovo metodo per gestire la direzione
     private void ShootWithDirection(Vector3 baseDirection, float angle)
     {
-        GameObject bullet = ObjectPoolManager.instance.GetPoolObject();
+        GameObject bullet = poolS.GetPooledObject();
         if (bullet == null) return;
 
         Quaternion spreadRot = Quaternion.AngleAxis(angle, Vector3.up);

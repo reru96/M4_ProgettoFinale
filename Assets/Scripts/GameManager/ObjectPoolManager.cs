@@ -5,40 +5,30 @@ using UnityEngine;
 
 public class ObjectPoolManager : MonoBehaviour
 {
-    public static ObjectPoolManager instance;
-    private List<GameObject> pools = new List<GameObject>();
-    private int amountToPool = 20;
-    [SerializeField] private GameObject bulletPrefab;
 
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
+    [SerializeField] private GameObject prefabToPool;
+    [SerializeField] private int amountToPool = 10;
+
+    private List<GameObject> pool = new List<GameObject>();
+
     void Start()
     {
         for (int i = 0; i < amountToPool; i++)
         {
-            GameObject obj = Instantiate(bulletPrefab);
+            GameObject obj = Instantiate(prefabToPool, transform);
             obj.SetActive(false);
-            pools.Add(obj);
+            pool.Add(obj);
         }
-        
     }
 
-    public GameObject GetPoolObject()
+    public GameObject GetPooledObject()
     {
-        for(int i = 0;i < pools.Count;i++)
+        foreach (GameObject obj in pool)
         {
-            if(!pools[i].activeInHierarchy)
-            {
-                return pools[i];
-            }
-            
+            if (!obj.activeInHierarchy)
+                return obj;
         }
-        return null;
+
+        return null; 
     }
-   
 }

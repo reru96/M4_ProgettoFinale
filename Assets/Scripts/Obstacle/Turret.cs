@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    [SerializeField] protected ObjectPoolManager poolManager;
     [SerializeField] protected Transform player;
     [SerializeField] protected float distance;
     [SerializeField] protected float maxDistance;
@@ -58,7 +59,7 @@ public class Turret : MonoBehaviour
 
     protected virtual void Shoot(float spreadAngle)
     {
-        GameObject bullet = ObjectPoolManager.instance.GetPoolObject();
+        GameObject bullet = poolManager.GetPooledObject();
 
         if (bullet != null)
         {
